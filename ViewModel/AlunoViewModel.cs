@@ -13,6 +13,7 @@ namespace XF.LocalDB.ViewModel
     {
         #region Atributos
         public Aluno alunoSelecionado;
+        public Aluno alunoModificado;
         private int alunoID;
         private Aluno aluno;
         #endregion
@@ -23,6 +24,18 @@ namespace XF.LocalDB.ViewModel
             {
                 MessagingCenter.Send<AlunoViewModel>(this, "NovoAluno");
             });
+
+            OnSalvarCommand = new Command(() =>
+            {
+                alunoModificado = new Aluno();
+                alunoModificado.Nome = Nome;
+                alunoModificado.RM = RM;
+                alunoModificado.Email = Email;
+                alunoModificado.Aprovado = Aprovado;
+                Limpar();
+                App.AlunoModel.SalvarAluno(alunoModificado);
+                MessagingCenter.Send<AlunoViewModel>(this, "FecharTela");
+            });
         }
 
         public AlunoViewModel(int alunoID)
@@ -32,6 +45,29 @@ namespace XF.LocalDB.ViewModel
             Email = aluno.Email;
             RM = aluno.RM;
             Aprovado = aluno.Aprovado;
+            Id = alunoID;
+
+            OnSalvarCommand = new Command(() =>
+            {
+                alunoModificado = new Aluno();
+                alunoModificado.Nome = Nome;
+                alunoModificado.RM = RM;
+                alunoModificado.Email = Email;
+                alunoModificado.Aprovado = Aprovado;
+                alunoModificado.Id = Id;
+                Limpar();
+                App.AlunoModel.SalvarAluno(alunoModificado);
+                MessagingCenter.Send<AlunoViewModel>(this, "FecharTela");
+            });
+
+        }
+
+        private void Limpar()
+        {
+            Nome = string.Empty;
+            RM = string.Empty;
+            Email = string.Empty;
+            Aprovado = false;
         }
 
         #region Propriedades
@@ -41,6 +77,7 @@ namespace XF.LocalDB.ViewModel
         public int Id { get; set; }
         public bool Aprovado { get; set; }
         public ICommand OnNovoCommand { get; set; }
+        public ICommand OnSalvarCommand { get; set; }
 
         public List<Aluno> Alunos
         {

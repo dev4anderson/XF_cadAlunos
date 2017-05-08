@@ -41,6 +41,18 @@ namespace XF.LocalDB.View.Aluno
 
             base.OnAppearing();
 
+            MessagingCenter.Subscribe<AlunoViewModel>(vmAluno, "FecharTela", (msg) =>
+            {
+                Navigation.PopAsync();
+            });
+
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<AlunoViewModel>(vmAluno, "FecharTela");
         }
 
         public void OnSalvar(object sender, EventArgs args)

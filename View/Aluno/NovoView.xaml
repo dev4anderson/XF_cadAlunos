@@ -15,7 +15,7 @@
                 <Switch x:Name="IsAprovado" IsToggled="{Binding Aprovado, Mode=TwoWay}" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Button x:Name="btnSalvar" Text="Salvar" Clicked="OnSalvar" />
+                <Button x:Name="btnSalvar" Text="Salvar" Command="{Binding OnSalvarCommand}"/>
                 <Button x:Name="btnCancelar" Text="Cancelar" Clicked="OnCancelar"/>
             </StackLayout>
         </StackLayout>
