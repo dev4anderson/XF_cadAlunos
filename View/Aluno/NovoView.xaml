@@ -16,7 +16,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="btnSalvar" Text="Salvar" Clicked="OnSalvar" />
-                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="OnCancelar" />
+                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="OnCancelar"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
