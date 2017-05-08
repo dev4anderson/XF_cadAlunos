@@ -36,6 +36,18 @@ namespace XF.LocalDB.ViewModel
                 App.AlunoModel.SalvarAluno(alunoModificado);
                 MessagingCenter.Send<AlunoViewModel>(this, "FecharTela");
             });
+
+            OnCancelarCommand = new Command(() =>
+            {
+                Limpar();
+                MessagingCenter.Send<AlunoViewModel>(this, "FecharTela");
+            });
+
+            OnDeleteCommand = new Command(() =>
+            {
+                if (Id != null)
+                    App.AlunoModel.RemoverAluno(Id);
+            });
         }
 
         public AlunoViewModel(int alunoID)
@@ -60,6 +72,12 @@ namespace XF.LocalDB.ViewModel
                 MessagingCenter.Send<AlunoViewModel>(this, "FecharTela");
             });
 
+            OnCancelarCommand = new Command(() =>
+            {
+                Limpar();
+                MessagingCenter.Send<AlunoViewModel>(this, "FecharTela");
+            });
+
         }
 
         private void Limpar()
@@ -78,6 +96,8 @@ namespace XF.LocalDB.ViewModel
         public bool Aprovado { get; set; }
         public ICommand OnNovoCommand { get; set; }
         public ICommand OnSalvarCommand { get; set; }
+        public ICommand OnCancelarCommand { get; set; }
+        public ICommand OnDeleteCommand { get; set; }
 
         public List<Aluno> Alunos
         {
@@ -99,7 +119,6 @@ namespace XF.LocalDB.ViewModel
                 if (alunoSelecionado != null)
                 {
                     this.Id = alunoSelecionado.Id;
-                    this.Nome = alunoSelecionado.Nome;
                     MessagingCenter.Send<AlunoViewModel>(this, "AlunoSelecionado");
                 }
 

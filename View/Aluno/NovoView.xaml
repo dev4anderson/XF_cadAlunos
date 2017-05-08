@@ -16,7 +16,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="btnSalvar" Text="Salvar" Command="{Binding OnSalvarCommand}"/>
-                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="OnCancelar"/>
+                <Button x:Name="btnCancelar" Text="Cancelar" Command="{Binding OnCancelarCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
