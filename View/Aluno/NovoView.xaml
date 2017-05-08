@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF.LocalDB.View.Aluno.NovoView"
+             xmlns:vm="clr-namespace:XF.LocalDB.ViewModel"
+             Title="Formulário">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Entry x:Name="txtNome" Placeholder="Nome" Text="{Binding Nome, Mode=TwoWay}"/>
+            <Entry x:Name="txtRM" Placeholder="RM" Text="{Binding RM, Mode=TwoWay}" />
+            <Entry x:Name="txtEmail" Placeholder="E-mail" Text="{Binding Email, Mode=TwoWay}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Aprovado?" />
+                <Switch x:Name="IsAprovado" IsToggled="{Binding Aprovado, Mode=TwoWay}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnSalvar" Text="Salvar" Clicked="OnSalvar" />
+                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="OnCancelar" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
